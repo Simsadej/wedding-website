@@ -1,0 +1,77 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+body {
+    background-color: #f8f5f1;
+    font-family: 'Josefin Sans', sans-serif;
+    height: 100%;
+}
+
+h1, h3, h5{
+    color: #fcc0c5;
+    font-family: 'Style Script', cursive;
+    font-weight: 400;
+    font-style: normal;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+
+}
+h1 {
+    font-size: 6em;
+    overflow: hidden;
+
+}
+
+h3 {
+    font-size: 6em;
+    overflow: hidden;
+}
+
+pre {
+    font-family: 'Josefin Sans', sans-serif;
+}
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+footer {
+    width:100%;
+    margin-top: 167px;
+}
+
+@media only screen and (max-width: 412px) and (min-width: 360px) {
+    h3{
+        font-size: 3em;
+    }
+
+}
+
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+      width: 100%;
+    }
+
+    footer {
+        margin-top: 0;
+    }
+    .first-last {
+        display: block;
+    }
+
+    h3 {
+        font-size: 5em;
+    }
+    .container {
+        padding: 4px 10px;
+    }
+
+    .footer-items{
+        float: none;
+        position: static;
+    }
+  }

@@ -1,0 +1,38 @@
+span {
+    color: #ff5757;
+    font-size: 0.75em;
+}
+
+.form-submission {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.first-last {
+    width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 20px;
+}
+.button {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+}
+
+.
+
+@media only screen and (max-width: 767px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+
+    .button {
+        width: 100%;
+    }
+
+}

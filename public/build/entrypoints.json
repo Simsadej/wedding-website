@@ -1,0 +1,15 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_bootstrap_dist_css_bootstrap_css-node_modules_react-dom_client_js-node_m-8a993d.js",
+        "/build/app.js"
+      ],
+      "css": [
+        "/build/vendors-node_modules_bootstrap_dist_css_bootstrap_css-node_modules_react-dom_client_js-node_m-8a993d.css",
+        "/build/app.css"
+      ]
+    }
+  }
+}

@@ -1,0 +1,149 @@
+.logo {
+    margin-right: auto;
+}
+.wedding-logo {
+    height: 6em;
+
+}
+.links-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    padding: 2em 4em;
+}
+
+.navbar {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.navbar .nav-links {
+    height: 100%;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fcc0c5;
+    position: relative;
+}
+
+
+
+.menu-icon {
+    display: none;
+}
+
+ul.nav-menu {
+    display: inline-flex;
+    list-style: none ;
+}
+
+li a:before, li a:after
+{
+    position: absolute;
+    top: 27px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    background: #f97782;
+    content: "";
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+li a:before
+{
+    top: 0;
+    transform: translateY(-10px);
+}
+
+li a:after
+{
+    bottom: 0px;
+    transform: translateY(10px);
+}
+
+li a:hover:before , li a:hover:after
+{
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+      width: 100%;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+    }
+
+    .nav-menu {
+        width: 100%;
+        min-height: 280px;
+        box-shadow: 0 4px 8px rgb(0 0 0 / 16%);
+        background-color: #f8f5f1;
+        position: fixed;
+        top: -100%;
+        left: 0;
+        z-index: 1;
+        visibility: hidden;
+        opacity: 0;
+        transition: 0.4s ease;
+    }
+
+   .links-container{
+       flex-direction: column;
+       align-items: center;
+
+
+       height: 30%;
+       opacity: 0;
+       visibility: hidden;
+
+       z-index: 10;
+       box-shadow: -5px 0 5px rgba(0,0,0,0.25);
+       transition: 0.5s ease;
+
+   }
+
+   .links-container.active {
+       opacity: 1;
+       visibility: visible;
+   }
+
+   .navbar .list-item {
+       box-sizing: border-box;
+       height: auto;
+       width: 100%;
+       padding: 20px 30px ;
+       justify-content: center;
+   }
+
+   .menu-icon {
+       display: block;
+   }
+
+    .nav-menu.active {
+        gap: 28px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        top: 106px;
+        overflow: visible;
+        visibility: visible;
+        opacity: 1;
+    }
+
+
+    .fa-solid {
+        font-weight: 900;
+        color: pink;
+    }
+
+  }
+
