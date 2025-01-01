@@ -17,7 +17,11 @@ class HomeController extends AbstractController
     #[Route('/wedding/{page}', name:'homepage', requirements: ['page' => '.*'])]
     public function welcome()
     {
-        return $this->render('index.html.twig');
+        $googleMapsApiKey = $this->getParameter('google_maps_api_key');
+
+        return $this->render('index.html.twig', [
+            'google_maps_api_key' => $googleMapsApiKey
+        ]);
 
     }
 
