@@ -16,7 +16,7 @@ function Navbar() {
     return(
         <>
             <nav className='navbar'>
-                <Link to='/wedding/home' className='logo' onClick={closeMenu}>
+                <Link to='/' className='logo' onClick={closeMenu}>
                     <img src={logo} alt='' className='wedding-logo'/>
                 </Link>
                 <div className='menu-icon'>
@@ -30,7 +30,7 @@ function Navbar() {
                     <ul className={`nav-menu ${isOpen && clicked ? 'active' : ''}`}>
 
                         <li>
-                            <Link to='/wedding/home' onClick={closeMenu} className='nav-links'>Home</Link>
+                            <Link to='/' onClick={closeMenu} className='nav-links'>Home</Link>
                         </li>
 
                         <li>
