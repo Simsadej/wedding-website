@@ -56,6 +56,10 @@ footer {
       width: 100%;
     }
 
+    #root {
+        overflow: hidden;
+    }
+
     footer {
         margin-top: 0;
     }

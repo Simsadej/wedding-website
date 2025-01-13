@@ -14,6 +14,12 @@ use Symfony\Component\Validator\ConstraintViolation;
 class HomeController extends AbstractController
 {
 
+    #[Route('/', name: 'home')]
+    public function home()
+    {
+        return $this->forward('App\Controller\HomeController::welcome', ['page' => 'home']);
+    }
+
     #[Route('/wedding/{page}', name:'homepage', requirements: ['page' => '.*'])]
     public function welcome()
     {
