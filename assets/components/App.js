@@ -6,15 +6,16 @@ import ConfirmAttendance from "./pages/ConfirmAttendance";
 import GiftRegistry from "./pages/GiftRegistry";
 import FAQs from "./pages/Faq";
 import 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.css';
 import Footer from "./Footer";
+
 function App(){
     return (
         <>
             <BrowserRouter>
                 <Navbar/>
                 <Routes>
-                    <Route path='/wedding/home' element={<Home/>}/>
+                    <Route path='/' element={<Home/>}/>
                     <Route path='/wedding/confirm-attendance' element={<ConfirmAttendance/>}/>
                     <Route path='/wedding/gift-registry' element={<GiftRegistry/>}/>
                     <Route path='/wedding/faqs' element={<FAQs/>}/>
