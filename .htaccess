@@ -1,0 +1,16 @@
+RewriteEngine On
+
+# Set the base path for the application
+RewriteBase /
+
+# Do not rewrite requests for existing files or directories
+#RewriteCond %{REQUEST_FILENAME} -f
+#RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_URI} ^/build/
+RewriteRule ^(.*)$ /public/$1 [L]
+#RewriteRule ^ - [L]
+
+# Rewrite all other requests to index.php in the public directory
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /public/index.php [QSA,L]

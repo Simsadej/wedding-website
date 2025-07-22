@@ -143,6 +143,9 @@ a {
     [class*="col-"] {
         width: 100%;
     }
+    a {
+        color: #000000;
+    }
 
     .hero-image {
         height: 79vh;

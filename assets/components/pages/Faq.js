@@ -1,3 +1,5 @@
+import OnionGele1 from '../../public/WhatsApp Image 2025-03-16 at 13.29.07 (2).jpeg';
+import OnionGele2 from '../../public/WhatsApp Image 2025-03-16 at 13.29.07 (1).jpeg';
 function Faq() {
 
     return (
@@ -19,15 +21,21 @@ function Faq() {
                             <div id="flush-collapseOne" className="accordion-collapse collapse"
                                  data-bs-parent="#accordionFlushExample">
                                 <div className="accordion-body">
-                                    <p>For the traditonal wear for guests please come wearing white native with onion
+                                    <p>For the traditional wear for guests please come wearing white native with onion
                                         coloured head wear/ accessories.</p>
-                                    
+
                                     <p>
-                                        For guest not wearing the traditional attire please dress in formal attire. 
+                                        For guest not wearing the traditional attire please dress in formal attire and also come wearing white of a lilac purple.
                                     </p>
 
-                                    <img src="" alt=""/>
-                                    
+                                    <div className="float-start">
+                                        <img className="img-thumbnail rounded onion-gele-one" src={OnionGele1} alt="onion_gele"/>
+                                    </div>
+
+                                    <div className="float-center">
+                                        <img className="img-thumbnail rounded onion-gele-two" src={OnionGele2} alt="onion_gele"/>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>

@@ -4,8 +4,6 @@ import '../../styles/Home.css';
 import HeroImage from '../../public/hero-image.jpeg';
 import FooterImage from '../../public/footer-image.jpeg';
 import ArchImage from '../../public/image-arch.png';
-import Florals from '../../public/floral-design.png';
-import {Button} from "../Button";
 import '../../styles/Button.css';
 
 function Home() {
@@ -14,7 +12,7 @@ function Home() {
             <div className='jumbotron jumbotron-fluid'>
                 <h1 className='home-title'>Remi Fawehinmi & Simisola Adejumo</h1>
 
-                <picture className=''>
+                <picture className=''>git
                     <source media="(max-width: 799px)" srcSet={HeroImage}/>
                     <source media="(min-width: 800px)" srcSet={HeroImage}/>
                     <img src={HeroImage} alt="" className='hero-image'/>
@@ -48,10 +46,19 @@ function Home() {
                                 <p>In the <strong>attendance section</strong>, can you Please confirm whether or not you
                                     will
                                     be at our wedding
-                                    with us? Please confirm as soon as possible so we can arrange everything much
+                                    with us? You can <strong> <a href="/wedding/confirm-attendance"
+                                                                 className="text-black">RSVP</a></strong> here as well
+                                    as clicking on the menu button on the top right corner of this page, clicking the
+                                    button below this text or scrolling to the bottom of the page.
+                                    You can also see the FAQ and Gift registry on the menu. Please confirm as soon as
+                                    possible so we can arrange everything much
                                     faster.
                                 </p>
 
+
+                                <p><strong>For the dress code if you are wearing the traditional attire please wear white and onion coloured gele and fila
+                                    (there will be pictures in the <a href="/wedding/faqs">FAQ</a> section). For those not wearing traditional attire please wear white or something similar.</strong>
+                                </p>
 
                                 <p>
 
@@ -62,10 +69,15 @@ function Home() {
                                     media.
 
                                 </p>
+
                                 <p>
 
                                     Enjoy the site, and We’ll see you soon!
                                 </p>
+
+                                <div className='text-center text-black'>
+                                    <Link to="/wedding/confirm-attendance" className="btn-outline">RSVP</Link>
+                                </div>
                             </div>
                             <div className='img-arch col-sm-12 col-md-12 col-lg-6 col-xl-6 float-end '>
                                 <img src={ArchImage} alt='arch-image' className='arch-image'/>
@@ -93,11 +105,6 @@ function Home() {
                         <div className='col-sm col-lg-4 my-5 float-lg-end'>
 
                             <h5>April, 17, 2025</h5>
-
-                            <p>Ceremony | 12:00 PM
-                                <br/>
-                                Grange Park Methodist Church, Old Park Ridings, London N21 2EU
-                            </p>
                             <p>Traditional Engagement and Reception | 3:30 PM
                                 <br/>
                                 The Palace Banqueting
@@ -119,7 +126,7 @@ function Home() {
 
                                 <h3>Save the Date and we'll see you there!</h3>
                                 <p>
-                                    If you'd like to give us a gift we're registered at <a href="http://">Prezola</a>
+                                    If you'd like to give us a gift you can do so from  <Link to='/wedding/gift-registry'>here</Link>.
                                 </p>
 
                                 <Link to="/wedding/confirm-attendance" className="btn-outline">RSVP</Link>

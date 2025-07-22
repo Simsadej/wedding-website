@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Button} from "../Button";
 import '../../styles/ConfirmAttendance.css';
 import * as Yup from  'yup'
-import {expectedError} from "@babel/core/lib/errors/rewrite-stack-trace";
 
-function ConfirmAttendance(builder) {
+
+function ConfirmAttendance() {
 
     const [formData, setFormData] = useState({
         firstname: '',
@@ -16,6 +16,7 @@ function ConfirmAttendance(builder) {
     });
     const [error, setError] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isDisabled, setIsDisabled] = useState(false)
 
     const validationSchema = Yup.object({
         firstname: Yup.string().required('Your Firstname is required'),
@@ -56,7 +57,7 @@ function ConfirmAttendance(builder) {
                 body: JSON.stringify({ email }),
             });
             const data = await response.json();
-            console.log(data);
+
             if (data.exists) {
                 setError((error) => ({
                     error,
@@ -141,158 +142,178 @@ function ConfirmAttendance(builder) {
         }
     };
 
+    useEffect(() => {
+        const currentDate = new Date();
+
+        const targetDate = new Date('2025-03-28');
+
+        if (currentDate >= targetDate) {
+            console.log(currentDate >= targetDate);
+            setIsDisabled(true);
+            setTimeout(() => setIsDisabled(false), 10000);
+        }
+    }, []);
+
+
     return (
         <>
             <div className='container'>
-              <main>
-                  <h1 className='text-center text-lg-center'>Will you be there or will you miss it? </h1>
+                <main>
+                    <h1 className='text-center text-lg-center'>Will you be there or will you miss it? </h1>
 
-                  <div>
-                      <p className='text-center'>
-                          To confirm your attendance to the wedding, enter your first and lastname in the form below.
-                          Confirm your attendance by either selecting 'Yes' or 'No'. Finally please let us know if you will
-                          be bringing along any plus ones and how many and click on the 'submit' button.
-                          <br/>
-                          We can't wait to for you to join us on our special day!
-                      </p>
-                      <p className='text-center text-md-center text-lg-center'>Please RSVP by Feb 28th 2025</p>
-                  </div>
+                    <div>
+                        <p className='text-center'>
+                            To confirm your attendance to the wedding, enter your first and lastname in the form below.
+                            Confirm your attendance by either selecting 'Yes' or 'No'. Finally please let us know if you
+                            will
+                            be bringing along any plus ones and how many and click on the 'submit' button.
+                            <br/>
+                            We can't wait to for you to join us on our special day!
+                        </p>
+                        <p className='text-center text-md-center text-lg-center'>Please RSVP by March 28th 2025</p>
+                    </div>
 
-                  <form className='row mb-3 g-3 justify-content-center align-items-center' onSubmit={handleSubmit}>
-                      <div className='col-xs-12 col-md-6'>
-                          <div className='form-group'>
-                              <label className='form-label' htmlFor='firstname'>Firstname</label>
-                              <input
-                                  className='form-control'
-                                  name="firstname"
-                                  placeholder='Firstname'
-                                  id='firstName'
-                                  value={formData.firstname}
-                                  onChange={handleChange}/>
-                              {error.firstname && <span>{error.firstname}</span>}
-                          </div>
-                      </div>
-                      <div className='col-xs-12 col-md-6'>
-                          <div className='form-group'>
-                              <label className='form-label' htmlFor='lastName'>Lastname</label>
-                              <input
-                                  className='form-control'
-                                  name="lastname"
-                                  placeholder='Lastname'
-                                  id='lastName'
-                                  value={formData.lastname}
-                                  onChange={handleChange}
-                              />
-                              {error.lastname && <span>{error.lastname}</span>}
-                          </div>
-                      </div>
+                    <form className='row mb-3 g-3 justify-content-center align-items-center' onSubmit={handleSubmit}>
+                        <div className='col-xs-12 col-md-6'>
+                            <div className='form-group'>
+                                <label className='form-label' htmlFor='firstname'>Firstname</label>
+                                <input
+                                    className='form-control'
+                                    name="firstname"
+                                    placeholder='Firstname'
+                                    id='firstName'
+                                    value={formData.firstname}
+                                    onChange={handleChange}
+                                    disabled={isDisabled}
+                                />
+                                {error.firstname && <span>{error.firstname}</span>}
+                            </div>
+                        </div>
+                        <div className='col-xs-12 col-md-6'>
+                            <div className='form-group'>
+                                <label className='form-label' htmlFor='lastName'>Lastname</label>
+                                <input
+                                    className='form-control'
+                                    name="lastname"
+                                    placeholder='Lastname'
+                                    id='lastName'
+                                    value={formData.lastname}
+                                    onChange={handleChange}
+                                    disabled={isDisabled}
+                                />
+                                {error.lastname && <span>{error.lastname}</span>}
+                            </div>
+                        </div>
 
+                        <div className='mb-3'>
+                            <div className='form-group col-sm col-lg-6 col-xl-6 g-xl-4'>
+                                <label>
+                                    Email
+                                </label>
+                                <input
+                                    className='form-control'
+                                    name='email'
+                                    placeholder='Email'
+                                    value={formData.email}
+                                    type='text'
+                                    onChange={handleChange}
+                                    disabled={isDisabled}
+                                />
+                                {error.email && <span>{error.email}</span>}
+                            </div>
+                        </div>
 
-                      <div className='mb-3'>
-                          <div className='form-group col-sm col-lg-6 col-xl-6 g-xl-4'>
-                              <label>
-                                  Email
-                              </label>
-                              <input
-                                  className='form-control'
-                                  name='email'
-                                  placeholder='Email'
-                                  value={formData.email  }
-                                  type='text'
-                                  onChange={handleChange}
-                              />
-                              { error.email  && <span>{error.email}</span>}
-                          </div>
-                      </div>
+                        <div className='mb-3'>
+                            <div className='col-sm form-group'>
+                                <label>Are you attending?</label>
+                            </div>
 
-                      <div className='mb-3'>
-                          <div className='col-sm form-group'>
-                              <label>Are you attending?</label>
-                          </div>
+                            <div className='form-check mt-3'>
+                                <label className='form-check-label' htmlFor='isAttending'>
+                                    Yes
+                                </label>
+                                <input
+                                    className='form-check-input'
+                                    name='isAttending'
+                                    type='radio'
+                                    id='attendingYes'
+                                    value='1'
+                                    checked={formData.isAttending === '1'}
+                                    onChange={handleChange}
+                                    disabled={isDisabled}
+                                />
+                            </div>
 
-                          <div className='form-check mt-3'>
-                              <label className='form-check-label' htmlFor='isAttending'>
-                                  Yes
-                              </label>
-                              <input
-                                  className='form-check-input'
-                                  name='isAttending'
-                                  type='radio'
-                                  id='attendingYes'
-                                  value={1}
-                                  checked={formData.isAttending === '1'}
-                                  onChange={handleChange}
-                              />
+                            <div className='form-check'>
+                                <label className='form-check-label' htmlFor='isAttending'>
+                                    No
+                                </label>
+                                <input
+                                    className='form-check-input'
+                                    name='isAttending'
+                                    value='0'
+                                    type='radio'
+                                    checked={formData.isAttending === '0'}
+                                    onChange={handleChange}
+                                    disabled={isDisabled}
+                                />
+                            </div>
+                            {error.isAttending && <span>{error.isAttending}</span>}
+                        </div>
 
-                          </div>
+                        <div className='form-check'>
+                            <label className='form-check-label' htmlFor=''>
+                                Plus one(s)?
+                            </label>
+                            <input
+                                className='form-check-input'
+                                name='plusOne'
+                                value={formData.plusOne}
+                                type='checkbox'
+                                onChange={handleChange}
+                                disabled={isDisabled}
+                            />
+                        </div>
 
-                          <div className='form-check'>
-                              <label className='form-check-label' htmlFor='isAttending'>
-                                  No
-                              </label>
-                              <input
-                                  className='form-check-input'
-                                  name='isAttending'
-                                  value={0}
-                                  type='radio'
-                                  checked={formData.isAttending === '0'}
-                                  onChange={handleChange}/>
+                        <div className='mb-3'>
+                            {formData.plusOne && <div className='form-group col-sm col-lg-6 col-xl-6 g-xl-4'>
+                                <label>
+                                    How many plus ones will you bring?
+                                </label>
+                                <input
+                                    className='form-control'
+                                    name='numPlusOne'
+                                    value={formData.numPlusOne}
+                                    type='number'
+                                    onChange={handleChange}
+                                    disabled={isDisabled}
+                                />
+                                {error.numPlusOne && <span>{error.numPlusOne}</span>}
+                            </div>}
+                        </div>
 
-                          </div>
-                          {error.isAttending && <span>{error.isAttending}</span>}
+                        <div className='button'>
+                            <Button
+                                children='Submit'
+                                size='btn-small'
+                                type='submit'
+                                style={isDisabled ? 'btn-secondary' : 'btn-outline'}
+                                disabled={isDisabled}
+                                onClick={handleSubmit}
+                            />
+                        </div>
+                    </form>
 
-                      </div>
-
-                      <div className='form-check'>
-                          <label className='form-check-label' htmlFor=''>
-                              Plus one(s)?
-                          </label>
-                          <input
-                              className='form-check-input'
-                              name='plusOne'
-                              value={formData.plusOne}
-                              type='checkbox'
-                              onChange={handleChange}
-                          />
-                      </div>
-
-                      <div className='mb-3'>
-                          {formData.plusOne && <div className='form-group col-sm col-lg-6 col-xl-6 g-xl-4'>
-                              <label>
-                                  How many plus ones will you bring?
-                              </label>
-                              <input
-                                  className='form-control'
-                                  name='numPlusOne'
-                                  value={formData.numPlusOne}
-                                  type='number'
-                                  onChange={handleChange}
-                              />
-                              {error.numPlusOne && <span>{error.numPlusOne}</span>}
-                          </div>}
-                      </div>
-
-
-                      <div className='button'>
-                          <Button
-
-                              children='Submit'
-                              size='btn-small'
-                              type='submit'
-                              style='btn-outline'
-                              onClick={handleSubmit}/>
-
-                      </div>
-
-                  </form>
-
-                  {isSubmitted && (
-                      <div className="form-submission alert alert-success text center mx-3">
-                          Your details have been submitted!
-                      </div>
-                  )}
-              </main>
-
+                    {isSubmitted && (
+                        <div className="form-submission alert alert-success text center mx-3">
+                            Your details have been submitted!
+                        </div>
+                    )}
+                    {isDisabled && (
+                        <p className="alert alert-secondary text center mx-3">This form has been disabled as the
+                            deadline (March 28, 2025) has passed.</p>
+                    )}
+                </main>
             </div>
 
 
