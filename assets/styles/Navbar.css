@@ -143,7 +143,10 @@ li a:hover:before , li a:hover:after
 
     .fa-solid {
         font-weight: 900;
-        color: pink;
+        color: #000000;
+    }
+    .navbar .nav-links {
+        color: #000000;
     }
 
   }

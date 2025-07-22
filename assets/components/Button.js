@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 import '../styles/Button.css';
 import {Link} from 'react-router-dom';
+import {boolean} from "yup";
 
 const STYLES = [
     'btn-primary',
+    'btn-secondary',
     'btn-outline'
 ]
 const SIZES = [
@@ -16,7 +18,8 @@ export const Button = ({
         type,
         onClick,
         style,
-        size}) => {
+        size,
+        disabled}) => {
     const checkStyle = STYLES.includes(style) ? style : STYLES[0];
     const checkSize = SIZES.includes(size) ? size : SIZES[0];
 
@@ -25,7 +28,8 @@ export const Button = ({
                 className={`btn ${checkStyle} ${checkSize}`}
                 onClick={onClick}
                 type={type}
-                children={children}>
+                children={children}
+            disabled={disabled}>
             </button>
         )
 };
